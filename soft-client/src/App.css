@@ -1,0 +1,14 @@
+.study-list .edit {
+  font-size: 15px;
+}
+.study-list .cross {
+  font-size: 15px;
+  color: red;
+}
+
+.study-create {
+  margin: 20px 300px;
+  padding: 50px;
+}
+
+/*# sourceMappingURL=App.css.map */

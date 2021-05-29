@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="soft-medical.main" target="11" />
+      <module name="soft-medical.test" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

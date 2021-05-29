@@ -1,0 +1,15 @@
+.study-list{
+  $icon-size: 15px;
+  .edit{
+    font-size: $icon-size;
+  }
+  .cross {
+    font-size: $icon-size;
+    color: red;
+  }
+}
+
+.study-create{
+  margin: 20px 300px;
+  padding: 50px;
+}
