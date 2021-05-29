@@ -1,0 +1,61 @@
+sTask - "Simple study viewer"
+
+Technology stack you MUST use.
+
+	- Spring Boot, 
+	- React.js, 
+	- JPA/Hibernate, 
+	- Gradle, 
+	- JUnit, Mockito, 
+	- one of DB by your choice - Mysql, Postgresql, H2
+
+
+Data model description.
+
+Patient
+	- Person code (Mandatory, up to 30 symbols);
+	- First Name (Mandatory, up to 50 symbols);
+	- Last Name (Mandatory, up to 50 symbols);
+	- Date of birth (Mandatory).
+	
+Study
+	- Study name (Mandatory);
+	- Study description (up to 200 symbols);
+	- Study creation/update date/time (Mandatory).
+	
+One study has one patient.
+Person code is unique.
+
+
+Requirements.
+
+	- Application must be Spring Boot standalone web application (single executable JAR).
+	
+	- A user should be able to open a list of studies in the browser.
+	
+	- Fields of a list - "Person code", "Patient's full name", "Patient's date of birth", "Study name", "Study creation/update datetime".
+
+	- The list must be ordered by "Study creation/update datetime". Most recent on top.
+	
+	- A user should be able to add a study to the list.
+	
+	- A user should be able to edit an existing study in the list.
+	
+	- UI correctly displayed on mobile devices will be considered as an advantage.
+	
+	- Unit tests are optional, but considered as an advantage. Unit tests for any class of your choice will be sufficient.
+	
+	
+Application delivery.
+	
+	- You have to provided readme file which contains instructions:
+		
+		- how to build;
+		
+		- how to prepare DB;
+		
+		- how to configure and run an application.
+		
+	- Share your application's source code over GitHub or other online source code repository.
+ 
+ 
