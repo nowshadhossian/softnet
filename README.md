@@ -6,7 +6,7 @@ MYSQL_USER, MYSQL_PASSWORD. default value taken is root and password: asdf1234
 3) - soft-client folder is the UI which is done in react.
 
    - soft-medical folder is the backend app
-4) go inside client folder: 
+4) go inside soft-client folder: 
 ```
 npm install --> install dependecies
 npm start  --> start react app
