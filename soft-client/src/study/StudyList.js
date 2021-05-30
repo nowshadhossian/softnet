@@ -8,6 +8,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCheckCircle, faCoffee, faPen, faTimesCircle} from '@fortawesome/free-solid-svg-icons'
 
 
+const StudyActions =({study}) =>{
+    return (
+        <React.Fragment>
+            <NavLink to={"/study/" + study.id}><FontAwesomeIcon icon={faPen} color="green" className={"edit"}/></NavLink>
+            <FontAwesomeIcon icon={faTimesCircle} className={"ml-1 cross"}/>
+        </React.Fragment>
+    );
+};
+
+
 function StudyList(props) {
     const [studyPatientDtos, setStudyPatientDtos] = useState([]);
 
@@ -20,18 +30,21 @@ function StudyList(props) {
 
     }, []);
 
+    function convertDate(date) {
+        return moment(date).format("YYYY-MM-DD h:mm");
+    }
+
     return(
         <Layout title={"Study List"} classname={"study-list"}>
-            <Link to={"/study/create"} className={"btn btn-success"}>Create</Link>
+            <PageControls/>
             <section>
                 <Table striped className={""}>
                     <thead>
                         <td className={"d-none d-md-block"}>sl.</td>
                         <td>Person Code</td>
-                        <td className={"w-1"}>Patient's full name</td>
-                        <td>Date of birth</td>
+                        <td className={"w-1"}>Patient name</td>
+                        <td>DOB</td>
                         <td>Study name</td>
-                        <td className={"d-none d-md-block"}>Create date</td>
                         <td className={"d-none d-md-block"}>Update date</td>
                         <td>Action</td>
                     </thead>
@@ -41,13 +54,11 @@ function StudyList(props) {
                             <td className={"d-none d-md-block"}>{index + 1}</td>
                             <td>{item.patientCode}</td>
                             <td>{item.fullName}</td>
-                            <td>{moment(item.dateOfBirth).format("YYYY-MM-DD h:mm")}</td>
+                            <td>{moment(item.dateOfBirth).format("YYYY-MM-DD")}</td>
                             <td>{item.name}</td>
-                            <td className={"d-none d-md-block"}>{moment(item.createDate).format("YYYY-MM-DD h:mm")}</td>
-                            <td className={"d-none d-md-block"}>{moment(item.updateDate).format("YYYY-MM-DD h:mm")}</td>
+                            <td className={"d-none d-md-block"}>{convertDate(item.updateDate)}</td>
                             <td>
-                                <NavLink to={"/study/" + item.id}><FontAwesomeIcon icon={faPen} color="green" className={"edit"}/></NavLink>
-                                <FontAwesomeIcon icon={faTimesCircle} className={"ml-1 cross"}/>
+                                <StudyActions study={item}/>
                             </td>
                         </tr>
                     )}
@@ -57,5 +68,9 @@ function StudyList(props) {
         </Layout>
     );
 }
+
+const PageControls = () =>
+    <Link to={"/study/create"} className={"btn btn-success"}>Create</Link>
+;
 
 export default StudyList;

@@ -1,14 +1,22 @@
-.study-list .edit {
-  font-size: 15px;
+@media only screen and (max-width: 480px) {
+  .study-create {
+    margin: 0;
+    padding: 20px;
+  }
 }
-.study-list .cross {
-  font-size: 15px;
-  color: red;
-}
+@media (min-width: 768px) {
+  .study-list .edit {
+    font-size: 15px;
+  }
+  .study-list .cross {
+    font-size: 15px;
+    color: red;
+  }
 
-.study-create {
-  margin: 20px 300px;
-  padding: 50px;
+  .study-create {
+    margin: 20px 300px;
+    padding: 10px 50px;
+  }
 }
 
 /*# sourceMappingURL=App.css.map */

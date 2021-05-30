@@ -34,10 +34,6 @@ public class StudyService {
         return Optional.of(mapper.from(study, patient));
     }
 
-  /*  public Page<Study> findAll(Pageable pageable) {
-        return studyRepository.findByOrderByCreateDateDesc(pageable);
-    }*/
-
     public Page<StudyPatientDto> findAll(Pageable pageable) {
         return studyRepository.findByOrderByCreateDateDesc(pageable)
                 .map(study -> mapper.from(study, study.getPatient()));
@@ -52,11 +48,6 @@ public class StudyService {
 
     public Study save(Study study) {
         return studyRepository.save(study);
-    }
-
-    public Study update(Study study) {
-        Study existing = studyRepository.findById(study.getId()).orElseThrow(NotFoundException::new);
-        return studyRepository.save(existing);
     }
 
     public Study update(StudyPatientDto dto) {

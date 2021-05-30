@@ -1,15 +1,19 @@
-.study-list{
-  $icon-size: 15px;
-  .edit{
-    font-size: $icon-size;
-  }
-  .cross {
-    font-size: $icon-size;
-    color: red;
-  }
-}
+@import "_mobile";
 
-.study-create{
-  margin: 20px 300px;
-  padding: 50px;
+@media (min-width: 768px) {
+  .study-list{
+    $icon-size: 15px;
+    .edit{
+      font-size: $icon-size;
+    }
+    .cross {
+      font-size: $icon-size;
+      color: red;
+    }
+  }
+
+  .study-create{
+    margin: 20px 300px;
+    padding: 10px 50px;
+  }
 }

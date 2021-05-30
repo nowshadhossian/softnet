@@ -1,19 +1,21 @@
 import React, {useEffect, useState} from "react";
-import {NavLink, useHistory} from "react-router-dom";
+import {Link, NavLink, useHistory} from "react-router-dom";
 import {ErrorMessage, Field, Form, Formik, setIn} from "formik";
 import * as Yup from "yup";
 import * as StudyApi from "../api/StudyApi";
 import Layout from "../layout/Layout";
+
+
+const PageControls = () =>
+    <NavLink to={"/study/list"} className={"btn btn-primary"}>List</NavLink>
+;
 
 function StudyCreate(props) {
     let history = useHistory();
     const [initialValue, setInitialValue] = useState({});
     useEffect(() => {
         StudyApi.findById(props.match.params.id).then((response) => {
-           // history.push("/study/list");
-            console.log("initial value " + JSON.stringify( response));
             setInitialValue(response);
-
         });
 
     }, {});
@@ -26,101 +28,104 @@ function StudyCreate(props) {
 
     return(
         <Layout title={"Study Create"} classname={"study-create shadow"}>
-            <NavLink to={"/study/list"} className={"btn btn-primary"}>List</NavLink>
+            <PageControls/>
 
             <section>
-                <Formik
-                    enableReinitialize
-                    initialValues={initialValue}
-                    validationSchema={Yup.object({
-                        name: Yup.string()
-                            .required("Please complete this field"),
-                    })}
-                    onSubmit={(values, {setSubmitting, setFieldError}) => {
-                        setTimeout(() => {
-                            saveStudy(values);
-                            setSubmitting(false);
-                        }, 400);
-                    }}
-                >
-                    <Form>
-                        <div>
+                    <Formik
+                        enableReinitialize
+                        initialValues={initialValue}
+                        validationSchema={Yup.object({
+                            name: Yup.string()
+                                .required("Please complete this field"),
+                        })}
+                        onSubmit={(values, {setSubmitting, setFieldError}) => {
+                            setTimeout(() => {
+                                saveStudy(values);
+                                setSubmitting(false);
+                            }, 400);
+                        }}
+                    >
+                        <Form>
                             <div>
-                                <Field
-                                    name="id"
-                                    type="hidden"
-                                    id="id"
-                                    className="form-control"
-                                />
-                                <label className="" htmlFor="name">Name</label>
-                                <div className="input-group">
+                                <div className={"form-group"}>
                                     <Field
-                                        name="name"
-                                        type="text"
-                                        id="name"
-                                        className="form-control" placeholder="Enter Study Name"
+                                        name="id"
+                                        type="hidden"
+                                        id="id"
+                                        className="form-control"
                                     />
-                                    <ErrorMessage className={"alert alert-danger"} name="name" component="div"/>
+                                    <label className="" htmlFor="name">Name</label>
+                                    <div className="input-group">
+                                        <Field
+                                            name="name"
+                                            type="text"
+                                            id="name"
+                                            className="form-control" placeholder="Enter Study Name"
+                                        />
+                                        <ErrorMessage className={"alert alert-danger"} name="name" component="div"/>
+                                    </div>
+                                </div>
+                                <div className={"form-group"}>
+                                    <label className="" htmlFor="name">Description</label>
+                                    <div className="input-group">
+                                        <Field
+                                            name="description"
+                                            type="text"
+                                            id="ip"
+                                            className="form-control" placeholder="Enter description"
+                                        />
+                                    </div>
+                                </div>
+                                <div className={"form-group"}>
+                                    <label className="" htmlFor="serialNo">Patient First name</label>
+                                    <div className="input-group">
+                                        <Field
+                                            name="firstName"
+                                            type="text"
+                                            id="ip"
+                                            className="form-control" placeholder="Enter first name"
+                                        />
+                                    </div>
+                                </div>
+                                <div className={"form-group"}>
+                                    <label className="" htmlFor="serialNo">Patient Last name</label>
+                                    <div className="input-group">
+                                        <Field
+                                            name="lastName"
+                                            type="text"
+                                            id="ip"
+                                            className="form-control" placeholder="Enter last name"
+                                        />
+                                    </div>
+                                </div>
+                                <div className={"form-group"}>
+                                    <label className="" htmlFor="serialNo">Patient DOB</label>
+                                    <div className="input-group">
+                                        <Field
+                                            name="dateOfBirth"
+                                            type="date"
+                                            id="ip"
+                                            className="form-control" placeholder="Enter date of birth"
+                                        />
+                                    </div>
                                 </div>
                             </div>
-                            <div>
-                                <label className="" htmlFor="name">Description</label>
-                                <div className="input-group">
-                                    <Field
-                                        name="description"
-                                        type="text"
-                                        id="ip"
-                                        className="form-control" placeholder="Enter description"
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <label className="" htmlFor="serialNo">Patient First name</label>
-                                <div className="input-group">
-                                    <Field
-                                        name="firstName"
-                                        type="text"
-                                        id="ip"
-                                        className="form-control" placeholder="Enter first name"
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <label className="" htmlFor="serialNo">Patient Last name</label>
-                                <div className="input-group">
-                                    <Field
-                                        name="lastName"
-                                        type="text"
-                                        id="ip"
-                                        className="form-control" placeholder="Enter last name"
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <label className="" htmlFor="serialNo">Patient DOB</label>
-                                <div className="input-group">
-                                    <Field
-                                        name="dateOfBirth"
-                                        type="date"
-                                        id="ip"
-                                        className="form-control" placeholder="Enter date of birth"
-                                    />
-                                </div>
-                            </div>
-                        </div>
 
 
-                        <div className="text-right mt-2">
-                            <button type="submit" className="btn btn-success">
-                                Save
-                            </button>
-                        </div>
+                            <div className="text-right mt-2">
+                                <button type="submit" className="btn btn-success">
+                                    Save
+                                </button>
+                            </div>
 
-                    </Form>
-                </Formik>
+                        </Form>
+                    </Formik>
+
             </section>
         </Layout>
     );
 }
+
+
 
 export default StudyCreate;
