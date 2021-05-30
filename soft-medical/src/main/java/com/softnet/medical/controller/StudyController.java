@@ -26,13 +26,12 @@ public class StudyController {
 
     @GetMapping("/list")
     public ResponseEntity<?> getStudies(@RequestParam(required = false, defaultValue = "0") int pageNo) {
-     //  return ResponseEntity.ok(studyService.findAll(PageRequest.of(pageNo, 100, Sort.Direction.DESC, "createDate")));
        return ResponseEntity.ok(studyService.findAll(PageRequest.of(pageNo, 100, Sort.Direction.DESC, "createDate")));
     }
 
     @PostMapping
     public ResponseEntity<?> saveStudy(@RequestBody(required = false) StudyPatientDto form) {
-        //validate study here and then save
+        //validate study here and then save. One done in PatientController
         return new ResponseEntity<>(studyService.saveStudy(form), HttpStatus.CREATED);
     }
 

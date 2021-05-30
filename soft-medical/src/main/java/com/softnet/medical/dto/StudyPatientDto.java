@@ -19,7 +19,6 @@ import java.time.LocalDateTime;
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class StudyPatientDto {
-   // private Patient patient;
     private String patientCode;
     private String firstName;
     private String lastName;
